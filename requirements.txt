@@ -8,6 +8,8 @@ psycopg2-binary==2.9.5
 
 drf-spectacular==0.25.1
 
+djangorestframework-simplejwt==5.2.2
+
 pytest==7.2.1
 pytest-django==4.5.2
 pytest-factoryboy==2.5.1
