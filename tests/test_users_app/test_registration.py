@@ -16,10 +16,10 @@ User = get_user_model()
         ('user@example.com', 'username', '', 400),
         ('user@example.com', 'username', '11111111', 400),
         ('user@example.com', 'username', 'strong_pass', 201),
-   ]
+    ]
 )
 def test_login_data_validation(
-   email, username, password, status_code, api_client
+        email, username, password, status_code, api_client
 ):
     url = reverse('registration')
     data = {
