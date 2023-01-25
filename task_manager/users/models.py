@@ -30,7 +30,6 @@ class User(AbstractUser):
     )
 
     profile_picture = models.ImageField(
-        default="profile_pictures/default.jpg",
         upload_to="profile_pictures/"
     )
 
