@@ -9,15 +9,16 @@ from .models import User
 
 class UserSerializer(serializers.ModelSerializer):
 
-    # make password field write only
-    password = serializers.CharField(
-        write_only=True,
-        required=True,
-    )
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'profile_picture']
+
+
+class UserRegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password']
+        fields = ['username', 'email', 'password']
 
     def validate(self, data):
         """Validate password"""
