@@ -25,7 +25,7 @@ class User(AbstractUser):
     email = models.EmailField(
         "email address",
         unique=True,
-        error_messages={"unique": "This email is already in use"},
+        error_messages={"unique": "Эта почта уже занята"},
     )
 
     profile_picture = models.ImageField(
