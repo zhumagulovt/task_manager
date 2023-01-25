@@ -6,14 +6,14 @@ from rest_framework.response import Response
 
 from drf_spectacular.utils import extend_schema, OpenApiResponse
 
-from .serializers import UserSerializer
+from .serializers import UserRegistrationSerializer
 
 User = get_user_model()
 
 
 class RegistrationAPIView(GenericAPIView):
 
-    serializer_class = UserSerializer
+    serializer_class = UserRegistrationSerializer
     authentication_classes = ()
 
     # message in response
