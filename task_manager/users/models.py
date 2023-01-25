@@ -20,6 +20,7 @@ class CustomUserManager(UserManager):
 class User(AbstractUser):
     """
     Custom user with unique email and username.
+    Login should be with email.
     """
 
     email = models.EmailField(
@@ -32,6 +33,9 @@ class User(AbstractUser):
         default="profile_pictures/default.jpg",
         upload_to="profile_pictures/"
     )
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
 
     objects = UserManager()
 
