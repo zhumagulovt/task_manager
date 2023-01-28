@@ -4,3 +4,4 @@ exclude =
     venv
     migrations
     settings.py
+    __init__.py
