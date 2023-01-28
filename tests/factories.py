@@ -8,8 +8,7 @@ class UserFactory(DjangoModelFactory):
         model = 'users.User'
 
     username = Faker('user_name')
-    first_name = Faker('first_name')
-    last_name = Faker('last_name')
+    email = Faker('email')
     password = 'password'
     is_active = True
 
