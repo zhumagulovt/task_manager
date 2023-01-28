@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import GenericViewSet
+from rest_framework import mixins
 
 from .permissions import IsAccountOwner
 from .serializers import UserSerializer
@@ -8,7 +9,11 @@ from .serializers import UserSerializer
 User = get_user_model()
 
 
-class UserViewSet(ModelViewSet):
+class UserViewSet(mixins.RetrieveModelMixin,
+                  mixins.UpdateModelMixin,
+                  mixins.DestroyModelMixin,
+                  mixins.ListModelMixin,
+                  GenericViewSet):
     """
     ViewSet for User model
     """
