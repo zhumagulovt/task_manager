@@ -7,7 +7,10 @@ from rest_framework.response import Response
 
 from drf_spectacular.utils import extend_schema, OpenApiResponse
 
-from .serializers import UserRegistrationSerializer, ChangePasswordSerializer
+from .serializers import (
+    UserRegistrationSerializer,
+    ChangePasswordSerializer
+)
 from . import services
 
 User = get_user_model()
