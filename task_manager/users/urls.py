@@ -13,8 +13,8 @@ router = SimpleRouter()
 router.register('', UserViewSet, 'user')
 
 urlpatterns = [
-    path('registration/', RegistrationAPIView.as_view(), name='registration'),
-    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('auth/registration/', RegistrationAPIView.as_view(), name='registration'),
+    path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', include(router.urls))
 ]
