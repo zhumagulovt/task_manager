@@ -51,3 +51,15 @@ class TestUserDetail:
         response = api_client.delete(url)
         assert response.status_code == 204
         assert User.objects.count() == 0
+
+    def test_get_projects_of_user(self, logged_in_client, project_factory):
+        api_client, user = logged_in_client
+
+        projects_count = 10
+        project_factory.create_batch(projects_count, owner=user)
+
+        url = reverse('user_projects', kwargs={'username': user.username})
+        response = api_client.get(url)
+
+        assert response.status_code == 200
+        assert len(response.data) == projects_count
