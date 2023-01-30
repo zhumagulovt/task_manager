@@ -36,7 +36,9 @@ urlpatterns = [
         "api/v1/schema/swagger-ui/",
         SpectacularSwaggerView.as_view(url_name="schema"),
         name="swagger-ui",
-    )
+    ),
+
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
 
 if settings.DEBUG:
