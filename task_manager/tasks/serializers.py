@@ -12,3 +12,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ['id', 'name', 'description', 'created_at', 'owner', 'is_public']
+
+
+class UsernameSerializer(serializers.Serializer):
+    username = serializers.CharField(required=True)
