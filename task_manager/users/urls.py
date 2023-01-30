@@ -17,5 +17,6 @@ urlpatterns = [
     path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/change_password/', views.ChangePasswordAPIView.as_view(), name='change_password'),
+    path('<str:username>/projects/', views.UserProjectsListAPIView.as_view(), name='user_projects'),
     path('', include(router.urls))
 ]
