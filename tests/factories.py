@@ -1,5 +1,5 @@
 from factory.django import DjangoModelFactory
-from factory import Faker
+from factory import Faker, SubFactory
 
 
 class UserFactory(DjangoModelFactory):
@@ -18,3 +18,13 @@ class UserFactory(DjangoModelFactory):
         manager = cls._get_manager(model_class)
         # The default would use ``manager.create(*args, **kwargs)``
         return manager.create_user(*args, **kwargs)
+
+
+class ProjectFactory(DjangoModelFactory):
+
+    class Meta:
+        model = 'tasks.Project'
+
+    name = Faker('word')
+    description = Faker('text')
+    owner = SubFactory(UserFactory)
