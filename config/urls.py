@@ -26,6 +26,9 @@ urlpatterns = [
     # users app
     path('api/v1/users/', include('task_manager.users.urls')),
 
+    # tasks app
+    path('api/v1/projects/', include('task_manager.tasks.urls')),
+
     # drf-spectacular schema generation
     path("api/v1/schema/", SpectacularAPIView.as_view(), name="schema"),
     # Swagger
