@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404
 
 from django.db.models.query import QuerySet
 
+from task_manager.tasks.models import Project
+
 from .models import User
 
 
@@ -21,4 +23,4 @@ def change_user_password(user: User, password: str) -> None:
 
 
 def get_projects_of_user(user: User) -> QuerySet:
-    return user.projects.all()
+    return user.projects.select_related('owner').prefetch_related('users')
