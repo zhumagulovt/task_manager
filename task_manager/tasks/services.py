@@ -22,3 +22,9 @@ def get_users_of_project(project: Project) -> QuerySet:
 
 def add_user_to_project(project: Project, user: User) -> None:
     project.users.add(user)
+
+
+def delete_user_from_project(project: Project, user: User) -> None:
+
+    if user in project.users.all():
+        project.users.remove(user)
