@@ -1,3 +1,4 @@
+from rest_framework import status
 from rest_framework.generics import (
     CreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 )
@@ -49,4 +50,17 @@ class ProjectUsersAPIView(ListAPIView):
         project = services.get_project_by_pk(pk)
         services.add_user_to_project(project, user)
 
-        return Response()
+        return Response(status=status.HTTP_200_OK)
+
+    def delete(self, request, pk):
+        """Delete user from project"""
+        serializer = UsernameSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        username = serializer.validated_data.get('username')
+        user = get_user_by_username(username)
+
+        project = services.get_project_by_pk(pk)
+        services.delete_user_from_project(project, user)
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
