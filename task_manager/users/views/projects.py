@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 
-from task_manager.tasks.serializers import ProjectSerializer
+from task_manager.projects.serializers import ProjectSerializer
 
 from .. import services
 

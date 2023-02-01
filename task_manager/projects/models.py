@@ -23,14 +23,3 @@ class Project(BaseModel):
     )
     is_public = models.BooleanField('Публичный', default='True')
     users = models.ManyToManyField(User, related_name='projects')
-
-
-class Task(BaseModel):
-
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='tasks')
-    completed = models.BooleanField(default=False)
-    deadline = models.DateTimeField('Дедлайн')
-    completed_at = models.DateTimeField(blank=True, null=True)
-    performer = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='tasks'
-    )

@@ -55,7 +55,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "task_manager.users",
-    "task_manager.tasks"
+    "task_manager.projects"
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -85,7 +85,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                    'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },

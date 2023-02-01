@@ -3,7 +3,7 @@ import pytest
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-from task_manager.tasks.models import Project
+from task_manager.projects.models import Project
 
 User = get_user_model()
 

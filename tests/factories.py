@@ -23,7 +23,7 @@ class UserFactory(DjangoModelFactory):
 class ProjectFactory(DjangoModelFactory):
 
     class Meta:
-        model = 'tasks.Project'
+        model = 'projects.Project'
 
     name = Faker('word')
     description = Faker('text')
