@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.ProjectListCreateAPIView.as_view(), name='projects'),
     path('<int:pk>/', views.ProjectDetailAPIView.as_view(), name='project_detail'),
     path('<int:pk>/users/', views.ProjectUsersAPIView.as_view(), name='project_users'),
+    path('<int:pk>/users/<str:username>/', views.delete_user_from_project, name='project_users'),
 ]

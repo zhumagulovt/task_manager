@@ -2,8 +2,6 @@ from django.shortcuts import get_object_or_404
 
 from django.db.models.query import QuerySet
 
-from task_manager.tasks.models import Project
-
 from .models import User
 
 
