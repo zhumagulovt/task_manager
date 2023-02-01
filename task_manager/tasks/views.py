@@ -33,7 +33,7 @@ class ProjectDetailAPIView(RetrieveUpdateDestroyAPIView):
 
 
 class ProjectUsersAPIView(ListAPIView):
-
+    """Get list users of project"""
     serializer_class = UserSerializer
 
     def get_queryset(self):
