@@ -3,16 +3,14 @@ import pytest
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-from task_manager.tasks.models import Project
-
 User = get_user_model()
 
 
 @pytest.mark.django_db
 class TestProjectUsers:
 
-    def get_url(self, pk):
-        return reverse('project_users', kwargs={'pk': pk})
+    def get_url(self, **kwargs):
+        return reverse('project_users', kwargs=kwargs)
 
     def test_add_user_to_project(self, logged_in_client, project_factory, user_factory):
         api_client, user = logged_in_client
@@ -21,7 +19,7 @@ class TestProjectUsers:
         assert project.users.count() == 1
 
         new_user = user_factory()
-        url = self.get_url(project.pk)
+        url = self.get_url(pk=project.pk)
         data = {'username': new_user.username}
         response = api_client.post(url, data=data)
 
@@ -41,7 +39,7 @@ class TestProjectUsers:
         for u in users:
             project.users.add(u)
 
-        url = self.get_url(project.pk)
+        url = self.get_url(pk=project.pk)
         response = api_client.get(url)
 
         # users_count + 1 because there is already one user(owner) in users of project
@@ -58,9 +56,8 @@ class TestProjectUsers:
 
         assert project.users.count() == 2
 
-        url = self.get_url(project.pk)
-        data = {'username': new_user.username}
-        response = api_client.delete(url, data=data)
+        url = self.get_url(pk=project.pk, username=new_user.username)
+        response = api_client.delete(url)
 
         assert response.status_code == 204
         assert project.users.count() == 1
