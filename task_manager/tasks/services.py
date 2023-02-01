@@ -20,6 +20,11 @@ def get_users_of_project(project: Project) -> QuerySet:
     return project.users.all()
 
 
+def is_user_owner_of_project(project: Project, user: User) -> bool:
+
+    return project.owner == user
+
+
 def add_user_to_project(project: Project, user: User) -> None:
     project.users.add(user)
 
