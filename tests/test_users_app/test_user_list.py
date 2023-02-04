@@ -11,7 +11,7 @@ User = get_user_model()
 @pytest.mark.django_db()
 class TestUserList:
 
-    url = reverse('user-list')
+    url = reverse('user_list')
 
     def test_get(self, api_client, user_factory):
 
@@ -32,7 +32,7 @@ class TestUserList:
         random_index = random.randint(0, users_count - 1)
         user = users[random_index]
 
-        response = api_client.get(self.url + f'search/?q={user.username}')
+        response = api_client.get(self.url + f'?username={user.username}')
 
         assert response.status_code == 200
         assert response.data[0]['id'] == user.pk

@@ -10,6 +10,11 @@ def search_user_by_username(username: str) -> QuerySet:
     return User.objects.filter(username__icontains=username)
 
 
+def get_all_users() -> QuerySet:
+
+    return User.objects.all()
+
+
 def get_user_by_username(username: str) -> User:
     user = get_object_or_404(User.objects.all(), username=username)
     return user
