@@ -2,7 +2,9 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from django_filters import rest_framework as filters
 
-from ..services import get_all_users
+from task_manager.tasks.serializers import TaskSerializer
+
+from ..services import get_all_users, get_tasks_of_user
 from ..serializers import UserSerializer
 
 
@@ -23,3 +25,12 @@ class UserRetrieveAPIView(RetrieveAPIView):
     serializer_class = UserSerializer
     queryset = get_all_users()
     lookup_field = 'username'
+
+
+class UserTasksListAPIView(ListAPIView):
+
+    serializer_class = TaskSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return get_tasks_of_user(user)

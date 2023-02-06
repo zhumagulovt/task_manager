@@ -32,3 +32,7 @@ def get_public_projects_of_user(user: User) -> QuerySet:
 
 def get_projects_of_user(user: User) -> QuerySet:
     return user.projects.select_related('owner').prefetch_related('users')
+
+
+def get_tasks_of_user(user: User) -> QuerySet:
+    return user.tasks.select_related('performer', 'project')

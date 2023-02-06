@@ -14,6 +14,7 @@ urlpatterns = [
     path('auth/change_password/', views.ChangePasswordAPIView.as_view(), name='change_password'),
     path('auth/profile/', views.ProfileAPIView.as_view(), name='profile'),
     path('<str:username>/projects/', views.UserProjectsListAPIView.as_view(), name='user_projects'),
+    path('<str:username>/tasks/', views.UserTasksListAPIView.as_view(), name='user_tasks'),
     path('<str:username>/', views.UserRetrieveAPIView.as_view(), name='user_detail'),
     path('', views.UserListAPIView.as_view(), name='user_list')
 ]
