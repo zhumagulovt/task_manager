@@ -60,3 +60,11 @@ def delete_user_from_project(project: Project = None, user: User = None,
 
     if user in project.users.all():
         project.users.remove(user)
+
+
+def get_tasks_of_project(project: Project = None, project_id: int = None) -> QuerySet:
+
+    if project_id:
+        project = get_project_by_pk(project_id)
+
+    return project.tasks.select_related('performer', 'project')
