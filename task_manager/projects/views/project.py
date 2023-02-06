@@ -1,8 +1,10 @@
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from django_filters import rest_framework as filters
+
+from task_manager.tasks.serializers import TaskSerializer
 
 from ..permissions import IsOwnerOrReadOnly
 from ..serializers import ProjectSerializer
@@ -30,3 +32,12 @@ class ProjectDetailAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = ProjectSerializer
     permission_classes = (IsOwnerOrReadOnly, )
     queryset = services.get_all_projects()
+
+
+class ProjectTasksAPIView(ListAPIView):
+
+    serializer_class = TaskSerializer
+
+    def get_queryset(self):
+        pk = self.kwargs.get('id')
+        return services.get_tasks_of_project(project_id=pk)
