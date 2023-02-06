@@ -28,3 +28,15 @@ class ProjectFactory(DjangoModelFactory):
     name = Faker('word')
     description = Faker('text')
     owner = SubFactory(UserFactory)
+
+
+class TaskFactory(DjangoModelFactory):
+
+    class Meta:
+        model = 'tasks.Task'
+
+    name = Faker('word')
+    description = Faker('text')
+    project = SubFactory(ProjectFactory)
+    performer = SubFactory(UserFactory)
+    deadline = Faker('date_time')

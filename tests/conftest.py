@@ -2,10 +2,11 @@ import pytest
 
 from pytest_factoryboy import register
 
-from .factories import UserFactory, ProjectFactory
+from .factories import UserFactory, ProjectFactory, TaskFactory
 
 register(UserFactory)
 register(ProjectFactory)
+register(TaskFactory)
 
 
 @pytest.fixture
