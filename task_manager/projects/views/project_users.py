@@ -4,6 +4,8 @@ from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
+from drf_spectacular.utils import extend_schema
+
 from task_manager.users.serializers import UserSerializer
 
 from ..serializers import UsernameSerializer
@@ -18,6 +20,7 @@ class ProjectUsersAPIView(ListAPIView):
         project = services.get_project_by_pk(pk)
         return services.get_users_of_project(project)
 
+    @extend_schema(request=UsernameSerializer)
     def post(self, request, pk):
         """Add user to project"""
         serializer = UsernameSerializer(data=request.data)
