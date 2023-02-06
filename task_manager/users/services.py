@@ -25,5 +25,10 @@ def change_user_password(user: User, password: str) -> None:
     user.save(update_fields=['password'])
 
 
+def get_public_projects_of_user(user: User) -> QuerySet:
+    return user.projects.filter(is_public=True)\
+        .select_related('owner').prefetch_related('users')
+
+
 def get_projects_of_user(user: User) -> QuerySet:
     return user.projects.select_related('owner').prefetch_related('users')

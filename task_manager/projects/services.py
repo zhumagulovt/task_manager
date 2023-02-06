@@ -9,7 +9,8 @@ from .models import Project
 
 def get_all_projects() -> QuerySet:
 
-    return Project.objects.select_related('owner').prefetch_related('users')
+    return Project.objects.filter(is_public=True)\
+        .select_related('owner').prefetch_related('users')
 
 
 def get_project_by_pk(pk: int) -> Project:
